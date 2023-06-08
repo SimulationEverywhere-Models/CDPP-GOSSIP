@@ -1,0 +1,26 @@
+neighbors : gossip(-1,-1,0) gossip(-1,0,0) gossip(-1,1,0) 
+neighbors : gossip(0,-1,0)  gossip(0,0,0)  gossip(0,1,0)
+neighbors : gossip(1,-1,0)  gossip(1,0,0)  gossip(1,1,0)
+neighbors : gossip(-1,-1,1) gossip(-1,0,1) gossip(-1,1,1) 
+neighbors : gossip(0,-1,1)  gossip(0,0,1)  gossip(0,1,1)
+neighbors : gossip(1,-1,1)  gossip(1,0,1)  gossip(1,1,1)
+
+[people]
+rule : { if ((if(((-1,-1,0) = 1 and (-1,-1,1) > 0.75),1,0) + if(((-1,0,0) = 1 and (-1,0,1) > 0.75),1,0) + if(((-1,1,0) = 1 and (-1,1,1) > 0.75),1,0) + if(((0,-1,0) = 1 and (0,-1,1) > 0.75),1,0) + if(((0,1,0) = 1 and (0,1,1) > 0.75),1,0) + if(((1,-1,0) = 1 and (1,-1,1) > 0.75),1,0) + if(((1,0,0) = 1 and (1,0,1) > 0.75),1,0) + if(((1,1,0) = 1 and (1,1,1) > 0.75),1,0)) >= 1, 1, 0) } 1000 { cellPos(2) = 0 and (0,0,0) = 0 and stateCount(1) > 0 }
+rule : { if (random < 0.10,0,1) } 1000 { cellPos(2) = 0 and (0,0,0) = 1 }
+rule : 0 1000 { t }
+
+
+
+
+neighbors :  		    gossip(-1,0,0)  
+neighbors : gossip(0,-1,0)  gossip(0,0,0)  gossip(0,1,0)
+neighbors :   		    gossip(1,0,0)  
+neighbors :  		    gossip(-1,0,1) 
+neighbors : gossip(0,-1,1)  gossip(0,0,1)  gossip(0,1,1)
+neighbors :  		    gossip(1,0,1)  
+
+[people]
+rule : { if ((if(((-1,0,0) = 1 and (-1,0,1) > 0.75),1,0) + if(((0,-1,0) = 1 and (0,-1,1) > 0.75),1,0) + if(((0,1,0) = 1 and (0,1,1) > 0.75),1,0) + if(((1,0,0) = 1 and (1,0,1) > 0.75),1,0)) >= 1, 1, 0) } 1000 { cellPos(2) = 0 and (0,0,0) = 0 and stateCount(1) > 0 }
+rule : { if (random < 0.10,0,1) } 1000 { cellPos(2) = 0 and (0,0,0) = 1 }
+rule : 0 1000 { t }
